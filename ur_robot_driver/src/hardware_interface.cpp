@@ -311,6 +311,10 @@ bool HardwareInterface::init(ros::NodeHandle& root_nh, ros::NodeHandle& robot_hw
                      "[https://github.com/UniversalRobots/Universal_Robots_ROS_Driver#extract-calibration-information] "
                      "for details.");
   }
+
+  // The line below is to increase the reliability of the driver to stay connected during inactivity
+  ur_driver_->setKeepaliveCount(15);
+
   ur_driver_->registerTrajectoryDoneCallback(
       std::bind(&HardwareInterface::passthroughTrajectoryDoneCb, this, std::placeholders::_1));
 

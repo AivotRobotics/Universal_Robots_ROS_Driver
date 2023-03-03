@@ -316,7 +316,7 @@ bool HardwareInterface::init(ros::NodeHandle& root_nh, ros::NodeHandle& robot_hw
       std::bind(&HardwareInterface::passthroughTrajectoryDoneCb, this, std::placeholders::_1));
 
   // The line below is to increase the reliability of the driver to stay connected during inactivity
-  ur_driver_->setKeepaliveCount(500);
+  ur_driver_->setKeepaliveCount(125);
 
   // Send arbitrary script commands to this topic. Note: On e-Series the robot has to be in
   // remote-control mode.
